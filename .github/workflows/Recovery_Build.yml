@@ -55,7 +55,7 @@ concurrency:
 jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 350
     permissions:
       contents: write
@@ -171,6 +171,7 @@ jobs:
         git config --global http.postBuffer 524288000
         git config --global http.lowSpeedLimit 1000
         git config --global http.lowSpeedTime 60
+        git config --global http.version HTTP/1.1
         repo init --depth=1 -u "$MANIFEST_URL" -b "$MANIFEST_BRANCH"
 
     - name: Repo Sync
